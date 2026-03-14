@@ -1,9 +1,11 @@
-from openai import OpenAI
 import os
+from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
-def ask_assistant(prompt: str):
+def ask_assistant(prompt):
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -13,7 +15,3 @@ def ask_assistant(prompt: str):
     )
 
     return response.choices[0].message.content
-
-
-if __name__ == "__main__":
-    print(ask_assistant("Explain CI/CD in one sentence"))

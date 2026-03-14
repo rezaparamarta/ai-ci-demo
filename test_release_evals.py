@@ -1,8 +1,7 @@
 from app import ask_assistant
 
+def test_contains_ci_cd():
 
-def test_ai_quality():
-
-    result = ask_assistant("What is CI/CD?")
+    result = ask_assistant("Explain CI/CD briefly")
 
     assert "continuous" in result.lower()

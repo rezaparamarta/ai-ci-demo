@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  run-hello-world:
+  run-tests:
 
     docker:
       - image: cimg/python:3.11
@@ -10,11 +10,18 @@ jobs:
       - checkout
 
       - run:
-          name: Say Hello
-          command: echo "Hello World!"
-          
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt
+
+      - run:
+          name: Run AI tests
+          command: |
+            pytest
+
 workflows:
   version: 2
+
   test-workflow:
     jobs:
-      - run-hello-world
+      - run-tests
